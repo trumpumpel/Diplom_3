@@ -22,11 +22,6 @@ class BasePage:
             element = self.find_element(locator, timeout)
             element.click()
 
-    def click_el(self, element):
-        with allure.step("Кликаем по элементу"):
-            self.scroll(element)
-            element.click()
-
     def enter_text(self, locator: tuple, text: str, timeout: 15):
         with allure.step("Вводим текст"):
             element = self.find_element(locator, timeout)

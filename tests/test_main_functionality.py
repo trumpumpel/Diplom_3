@@ -32,14 +32,10 @@ class TestMainFunctionalityPage:
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.button_constructor_order_feed()
         mf_page.click_test_ing()
-        mf_page = web_driver.find_element(By.XPATH,
-                                          "//div[contains(@class, 'sCy8X p-10')]")
-        mf_page_div_class = mf_page.get_attribute("class")
+        elem = web_driver.find_element(By.XPATH,
+                                       "//div[contains(@class, 'sCy8X p-10')]")
+        mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == "Modal_orderBox__1xWdi Modal_modal__contentBox__sCy8X p-10"
-
-    """
-    всплывающее окно закрывается кликом по крестику
-    """
 
     @allure.title('Проверяем закрывается ли окно кликом по крестику')
     def test_clicking_on_the_cross_closes_the_pop_up_window(self, web_driver):
@@ -47,13 +43,9 @@ class TestMainFunctionalityPage:
         mf_page.button_constructor_order_feed()
         mf_page.click_test_elem()
         mf_page.click_cross_pop_up()
-        mf_page = web_driver.find_element(By.XPATH, "//div[contains(@class, 'P3_V5')]")
-        mf_page_div_class = mf_page.get_attribute("class")
+        elem = web_driver.find_element(By.XPATH, "//div[contains(@class, 'P3_V5')]")
+        mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == "Modal_modal__P3_V5"
-
-    """
-    при добавлении ингредиента в заказ счётчик этого ингридиента увеличивается
-    """
 
     @allure.title('Проверяем увеличение значения счётчика при добавлении ингридиента в заказ')
     def test_adding_ingredient_to_order(self, web_driver):
@@ -63,10 +55,6 @@ class TestMainFunctionalityPage:
         ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
         mf_page_p_text = web_driver.find_element(By.XPATH, "//p[@class='counter_counter__num__3nue1'][text()='2']")
         assert mf_page_p_text.text == "2"
-
-    """
-    залогиненный пользователь может оформить заказ
-    """
 
     @allure.title('Проверяем возможность оформить заказ залогиненным пользователем')
     def test_placing_an_order_logged_in_user(self, web_driver):

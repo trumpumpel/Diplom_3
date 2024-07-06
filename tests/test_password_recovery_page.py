@@ -31,7 +31,7 @@ class TestPasswordRecoveryPage:
         pr_page.set_email()
         pr_page.btn_recover_click()
         pr_page.click_element((By.CSS_SELECTOR, ".input__icon.input__icon-action"), 100)
-        pr_page = web_driver.find_element(By.CSS_SELECTOR,
+        elem = web_driver.find_element(By.CSS_SELECTOR,
                                           "#root > div > main > div > form > fieldset:nth-child(1) > div > div")
-        pr_page_div_class = pr_page.get_attribute("class")
+        pr_page_div_class = elem.get_attribute("class")
         assert pr_page_div_class == "input pr-6 pl-6 input_type_text input_size_default input_status_active"
