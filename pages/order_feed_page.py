@@ -11,38 +11,38 @@ class OrderFeedPage(BasePage):
     def __init__(self, web_driver):
         super().__init__(web_driver)
 
+    @allure.step('Нажимаем поле Лента заказов')
     def button_constructor_order_feed(self):
-        with  allure.step('Нажимаем поле Лента заказов'):
-            return self.click_element(OrderFeedPageLocators.ORDER_FEED, 100)
+        return self.click_element(OrderFeedPageLocators.ORDER_FEED, 100)
 
+    @allure.step('Нажимаем на тестовый элемент')
     def order_test_el_click(self):
-        with  allure.step('Нажимаем на тестовый элемент'):
-            return self.click_element(OrderFeedPageLocators.ORDER_TEST_EL, 100)
+        return self.click_element(OrderFeedPageLocators.ORDER_TEST_EL, 100)
 
+    @allure.step('Нажимаем на поле Личный Кабинет')
     def button_personal_account_click(self):
-        with  allure.step('Нажимаем на поле Личный Кабинет'):
-            return self.click_element(OrderFeedPageLocators.PERSONAL_ACCOUNT, 100)
+        return self.click_element(OrderFeedPageLocators.PERSONAL_ACCOUNT, 100)
 
+    @allure.step('Вводим email')
     def set_email(self):
-        with  allure.step('Вводим email'):
-            return self.enter_text(OrderFeedPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
+        return self.enter_text(OrderFeedPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
 
+    @allure.step('Вводим пароль')
     def set_pas(self):
-        with  allure.step('Вводим пароль'):
-            return self.enter_text(OrderFeedPageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
+        return self.enter_text(OrderFeedPageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
 
+    @allure.step('Клик по кнопке Ввод')
     def enter_button_click(self):
-        with  allure.step('Клик по кнопке Ввод'):
-            return self.click_element(OrderFeedPageLocators.SUB_BTN_CLICK_LOG, 100)
+        return self.click_element(OrderFeedPageLocators.SUB_BTN_CLICK_LOG, 100)
 
+    @allure.step('Клик по кнопке История заказов')
     def order_history_button_click(self):
-        with  allure.step('Клик по кнопке История заказов'):
-            return self.click_element(OrderFeedPageLocators.ORDER_HISTORY_BUTTON, 100)
+        return self.click_element(OrderFeedPageLocators.ORDER_HISTORY_BUTTON, 100)
 
+    @allure.step('Клик по кнопке Оформить заказ')
     def place_order_btn_click(self):
-        with  allure.step('Клик по кнопке Оформить заказ'):
-            return self.click_element(OrderFeedPageLocators.PLACE_ORDER_BTN, 100)
+        return self.click_element(OrderFeedPageLocators.PLACE_ORDER_BTN, 100)
 
+    @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):
-        with  allure.step('Кликаем крестик всплывающего окна'):
-            return self.click_element(OrderFeedPageLocators.CROSS_POP_UP, 100)
+        return self.click_element(OrderFeedPageLocators.CROSS_POP_UP, 100)

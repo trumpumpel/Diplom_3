@@ -11,14 +11,14 @@ class PasswordRecoveryPage(BasePage):
     def __init__(self, web_driver):
         super().__init__(web_driver)
 
+    @allure.step('Клик по кнопке Восстановить пароль')
     def btn_recover_password_click(self):
-        with  allure.step('Клик по кнопке Восстановить пароль'):
-            return self.click_element(PasswordRecoveryPageLocators.BTN_RECOVER_PASSWORD, 100)
+        return self.click_element(PasswordRecoveryPageLocators.BTN_RECOVER_PASSWORD, 100)
 
+    @allure.step('Вводим email')
     def set_email(self):
-        with  allure.step('Вводим email'):
-            return self.enter_text(PasswordRecoveryPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
+        return self.enter_text(PasswordRecoveryPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
 
+    @allure.step('Клик по кнопке Восстановить')
     def btn_recover_click(self):
-        with  allure.step('Клик по кнопке Восстановить'):
-            return self.click_element(PasswordRecoveryPageLocators.BTN_RECOVER, 100)
+        return self.click_element(PasswordRecoveryPageLocators.BTN_RECOVER, 100)
