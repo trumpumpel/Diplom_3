@@ -1,4 +1,4 @@
-from data import COR_EMAIL
+from data import TestUrlData
 from locators.password_recovery_page_locators import PasswordRecoveryPageLocators
 from pages.base_page import BasePage
 from conftest import web_driver
@@ -17,7 +17,7 @@ class PasswordRecoveryPage(BasePage):
 
     def set_email(self):
         with  allure.step('Вводим email'):
-            return self.enter_text(PasswordRecoveryPageLocators.SET_EMAIL_LOG, COR_EMAIL, 100)
+            return self.enter_text(PasswordRecoveryPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
 
     def btn_recover_click(self):
         with  allure.step('Клик по кнопке Восстановить'):

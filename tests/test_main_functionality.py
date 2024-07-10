@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from conftest import web_driver
 from selenium.webdriver.support import expected_conditions as EC, expected_conditions
 import allure
-from data import URL, URL_LOG, URL_FEED
+from data import TestUrlData
 from pages.main_functionality_page import MainFunctionalityPage
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 
@@ -15,18 +15,17 @@ class TestMainFunctionalityPage:
     @allure.title('Проверяем переход по клику на «Конструктор»')
     def test_click_button_constructor(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
-        mf_page.navigate(URL_LOG)
+        mf_page.navigate(f'{TestUrlData.URL}{TestUrlData.URL_LOG}')
         mf_page.button_constructor_click()
-        WebDriverWait(web_driver, 100).until(expected_conditions.url_changes(URL_LOG))
-        assert web_driver.current_url == URL
+        assert web_driver.current_url == TestUrlData.URL
 
     @allure.title('Проверяем переход по клику на «Лента заказов»')
     def test_click_button_order_feed(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.button_constructor_order_feed()
-        WebDriverWait(web_driver, 100).until(expected_conditions.url_changes(URL))
-        assert web_driver.current_url == URL_FEED
+        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_FEED}'
 
+    #
     @allure.title('Проверяем появление всплывающего окна с деталями после клика на ингридиент')
     def test_click_ingredient(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
@@ -47,6 +46,7 @@ class TestMainFunctionalityPage:
         mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == "Modal_modal__P3_V5"
 
+    #
     @allure.title('Проверяем увеличение значения счётчика при добавлении ингридиента в заказ')
     def test_adding_ingredient_to_order(self, web_driver):
         INGRID = web_driver.find_element(By.CSS_SELECTOR,

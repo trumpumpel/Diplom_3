@@ -1,4 +1,4 @@
-from data import COR_EMAIL, COR_PASSWORD
+from data import TestUrlData
 from locators.personal_account_page_locators import PersonalAccountPageLocators
 from pages.base_page import BasePage
 import allure
@@ -16,11 +16,11 @@ class PersonalAccountPage(BasePage):
 
     def set_email(self):
         with  allure.step('Вводим email'):
-            return self.enter_text(PersonalAccountPageLocators.SET_EMAIL_LOG, COR_EMAIL, 100)
+            return self.enter_text(PersonalAccountPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
 
     def set_pas(self):
         with  allure.step('Вводим пароль'):
-            return self.enter_text(PersonalAccountPageLocators.SET_PAS_LOG, COR_PASSWORD, 100)
+            return self.enter_text(PersonalAccountPageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
 
     def enter_button_click(self):
         with  allure.step('Клик по кнопке Ввод'):

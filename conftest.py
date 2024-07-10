@@ -4,8 +4,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FireFoxService
 from selenium.webdriver.chrome.service import Service as ChromeService
-
-from data import URL
+from data import TestUrlData
 import allure
 
 
@@ -30,6 +29,6 @@ def _get_driver(name):
 @pytest.fixture(params=["chrome", "firefox"])
 def web_driver(request):
     driver = _get_driver(request.param)
-    driver.get(URL)
+    driver.get(f'{TestUrlData.URL}')
     yield driver
     driver.quit()

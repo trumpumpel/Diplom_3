@@ -1,4 +1,4 @@
-from data import COR_EMAIL, COR_PASSWORD
+from data import TestUrlData
 from pages.base_page import BasePage
 from conftest import web_driver
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
@@ -37,11 +37,11 @@ class MainFunctionalityPage(BasePage):
 
     def set_email(self):
         with  allure.step('Вводим email'):
-            return self.enter_text(MainFunctionalityPageLocators.SET_EMAIL_LOG, COR_EMAIL, 100)
+            return self.enter_text(MainFunctionalityPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
 
     def set_pas(self):
         with  allure.step('Вводим пароль'):
-            return self.enter_text(MainFunctionalityPageLocators.SET_PAS_LOG, COR_PASSWORD, 100)
+            return self.enter_text(MainFunctionalityPageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
 
     def enter_button_click(self):
         with  allure.step('Клик по кнопке Ввод'):

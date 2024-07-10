@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import allure
 from locators.order_feed_page_locators import OrderFeedPageLocators
 from pages.order_feed_page import OrderFeedPage
-from data import URL_FEED
+from data import TestUrlData
 
 
 @allure.title('Тестируем раздел Лента заказов')
@@ -18,7 +18,7 @@ class TestOrderFeedPage:
     @allure.title('Тестируем появление всплывающего ока с деталями после клика на заказ')
     def test_click_order_pop_up_window_will_open(self, web_driver):
         of_page = OrderFeedPage(web_driver)
-        of_page.navigate(URL_FEED)
+        of_page.navigate(f'{TestUrlData.URL}{TestUrlData.URL_FEED}')
         of_page.order_test_el_click()
         of_page = web_driver.find_element(By.XPATH,
                                           "//div[contains(@class, 'Modal_modal__container__Wo2l_')]")
@@ -64,8 +64,8 @@ class TestOrderFeedPage:
         TEFKI = web_driver.find_element(By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
         ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
         of_page.place_order_btn_click()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.element_to_be_clickable(OrderFeedPageLocators.CROSS_POP_UP))
+        # WebDriverWait(web_driver, 100).until(
+        #     expected_conditions.element_to_be_clickable(OrderFeedPageLocators.CROSS_POP_UP))
         of_page.click_cross_pop_up()
         of_page.button_constructor_order_feed()
         WebDriverWait(web_driver, 100).until(
