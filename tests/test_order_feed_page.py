@@ -1,6 +1,3 @@
-from selenium.webdriver.chromium import webdriver
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver import ActionChains
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
@@ -56,21 +53,10 @@ class TestOrderFeedPage:
         of_page.set_email()
         of_page.set_pas()
         of_page.enter_button_click()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.CSS_SELECTOR,
-                                                               ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")))
-        INGRID = web_driver.find_element(By.CSS_SELECTOR,
-                                         ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
-        TEFKI = web_driver.find_element(By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
-        ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
+        of_page.adding_ingredients_to_order(web_driver)
         of_page.place_order_btn_click()
-        # WebDriverWait(web_driver, 100).until(
-        #     expected_conditions.element_to_be_clickable(OrderFeedPageLocators.CROSS_POP_UP))
         of_page.click_cross_pop_up()
         of_page.button_constructor_order_feed()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.XPATH,
-                                                               "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")))
         of_page_text = web_driver.find_element(By.XPATH,
                                                "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")
         num = of_page_text.text
@@ -90,13 +76,7 @@ class TestOrderFeedPage:
         of_page.set_email()
         of_page.set_pas()
         of_page.enter_button_click()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.CSS_SELECTOR,
-                                                               ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")))
-        INGRID = web_driver.find_element(By.CSS_SELECTOR,
-                                         ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
-        TEFKI = web_driver.find_element(By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
-        ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
+        of_page.adding_ingredients_to_order(web_driver)
         of_page.place_order_btn_click()
         WebDriverWait(web_driver, 100).until(
             expected_conditions.element_to_be_clickable(OrderFeedPageLocators.CROSS_POP_UP))
@@ -117,19 +97,11 @@ class TestOrderFeedPage:
         of_page.set_email()
         of_page.set_pas()
         of_page.enter_button_click()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.CSS_SELECTOR,
-                                                               ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")))
-        INGRID = web_driver.find_element(By.CSS_SELECTOR,
-                                         ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
-        TEFKI = web_driver.find_element(By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
-        ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
+        of_page.adding_ingredients_to_order(web_driver)
         of_page.place_order_btn_click()
         of_page_text = web_driver.find_element(By.XPATH,
                                                "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
         number = of_page_text.text
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.element_to_be_clickable(OrderFeedPageLocators.CROSS_POP_UP))
         of_page.click_cross_pop_up()
         of_page.button_constructor_order_feed()
         WebDriverWait(web_driver, 100).until(

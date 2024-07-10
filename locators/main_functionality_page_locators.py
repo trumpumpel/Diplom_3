@@ -15,4 +15,6 @@ class MainFunctionalityPageLocators:
     PERSONAL_ACCOUNT = (By.XPATH, "//p[contains(text(), 'Личный Кабинет')]")
     INGRID_LOC = (By.CSS_SELECTOR,
                   ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
+    TEFKI_LOC = (By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
     PLACE_ORDER_BTN = (By.XPATH, "//button[text()='Оформить заказ']")
+    ELEM = (By.XPATH, "//div[contains(@class, 'sCy8X p-10')]")
