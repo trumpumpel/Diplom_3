@@ -9,21 +9,21 @@ class BasePage:
     def __init__(self, web_driver: WebDriver):
         self.web_driver = web_driver
 
+    @allure.step("Открываем страницу")
     def navigate(self, url: str):
-        with allure.step("Открываем страницу"):
-            self.web_driver.get(url)
+        self.web_driver.get(url)
 
+    @allure.step("Ищем элемент на странице")
     def find_element(self, locator: tuple, timeout: 15) -> object:
-        with allure.step("Ищем элемент на странице"):
-            return WebDriverWait(self.web_driver, timeout).until(EC.presence_of_element_located(locator))
+        return WebDriverWait(self.web_driver, timeout).until(EC.presence_of_element_located(locator))
 
+    @allure.step("Ищем и кликаем по найденому элементу")
     def click_element(self, locator: tuple, timeout: 15):
-        with allure.step("Ищем и кликаем по найденому элементу"):
-            element = self.find_element(locator, timeout)
-            element.click()
+        element = self.find_element(locator, timeout)
+        element.click()
 
+    @allure.step("Вводим текст")
     def enter_text(self, locator: tuple, text: str, timeout: 15):
-        with allure.step("Вводим текст"):
-            element = self.find_element(locator, timeout)
-            element.click()
-            element.send_keys(text)
+        element = self.find_element(locator, timeout)
+        element.click()
+        element.send_keys(text)
