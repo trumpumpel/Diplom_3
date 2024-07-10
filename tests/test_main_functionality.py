@@ -8,7 +8,7 @@ from pages.main_functionality_page import MainFunctionalityPage
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 
 
-@allure.title('Тестируем основной функционал')
+@allure.title('Проверка основного функционала')
 class TestMainFunctionalityPage:
 
     @allure.title('Проверяем переход по клику на «Конструктор»')
