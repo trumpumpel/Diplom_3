@@ -43,9 +43,6 @@ class TestOrderFeedPage:
     def test_all_counter_when_creating_an_order(self, web_driver):
         of_page = OrderFeedPage(web_driver)
         of_page.button_constructor_order_feed()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.XPATH,
-                                                               "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")))
         of_page_text = web_driver.find_element(By.XPATH,
                                                "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")
         number = of_page_text.text
@@ -66,9 +63,6 @@ class TestOrderFeedPage:
     def test_day_counter_when_creating_an_order(self, web_driver):
         of_page = OrderFeedPage(web_driver)
         of_page.button_constructor_order_feed()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.XPATH,
-                                                               "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")))
         of_page_text = web_driver.find_element(By.XPATH,
                                                "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")
         number = of_page_text.text
@@ -78,13 +72,8 @@ class TestOrderFeedPage:
         of_page.enter_button_click()
         of_page.adding_ingredients_to_order(web_driver)
         of_page.place_order_btn_click()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.element_to_be_clickable(OrderFeedPageLocators.CROSS_POP_UP))
         of_page.click_cross_pop_up()
         of_page.button_constructor_order_feed()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located((By.XPATH,
-                                                               "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")))
         of_page_text = web_driver.find_element(By.XPATH,
                                                "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")
         num = of_page_text.text

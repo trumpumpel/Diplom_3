@@ -8,8 +8,8 @@ class MainFunctionalityPageLocators:
     SUB_BTN_CLICK_LOG = (By.XPATH, "//button[text()='Войти']")
     CONSTRUCTOR = (By.XPATH, "//p[text()='Конструктор']")
     ORDER_FEED = (By.XPATH, "//p[text()='Лента Заказов']")
-    TEST_ING = (By.XPATH, ".// *[ @ id = 'root'] / div / main / div / div / ul / li[1]")
-    TEST_ELEM = (By.XPATH, ".// *[ @ id = 'root'] / div / main / div / div / ul / li[1]")
+    TEST_ING = (
+        By.XPATH, "//li[contains(@class, 'OrderHistory_listItem__2x95r mb-6')][1]")
     CROSS_POP_UP = (By.XPATH,
                     "//*[@id='root']/div/section[2]/div[1]/button")
     PERSONAL_ACCOUNT = (By.XPATH, "//p[contains(text(), 'Личный Кабинет')]")
@@ -17,4 +17,3 @@ class MainFunctionalityPageLocators:
                   ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
     TEFKI_LOC = (By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
     PLACE_ORDER_BTN = (By.XPATH, "//button[text()='Оформить заказ']")
-    ELEM = (By.XPATH, "//div[contains(@class, 'sCy8X p-10')]")

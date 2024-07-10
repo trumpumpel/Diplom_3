@@ -30,7 +30,8 @@ class TestMainFunctionalityPage:
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.button_constructor_order_feed()
         mf_page.click_test_ing()
-        elem = web_driver.find_element(MainFunctionalityPageLocators.ELEM)
+        elem = web_driver.find_element(By.XPATH,
+                                       "//div[contains(@class, 'sCy8X p-10')]")
         mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == "Modal_orderBox__1xWdi Modal_modal__contentBox__sCy8X p-10"
 
@@ -38,7 +39,7 @@ class TestMainFunctionalityPage:
     def test_clicking_on_the_cross_closes_the_pop_up_window(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.button_constructor_order_feed()
-        mf_page.click_test_elem()
+        mf_page.click_test_ing()
         mf_page.click_cross_pop_up()
         elem = web_driver.find_element(By.XPATH, "//div[contains(@class, 'P3_V5')]")
         mf_page_div_class = elem.get_attribute("class")
@@ -59,8 +60,6 @@ class TestMainFunctionalityPage:
         mf_page.set_email()
         mf_page.set_pas()
         mf_page.enter_button_click()
-        WebDriverWait(web_driver, 100).until(
-            EC.presence_of_element_located(MainFunctionalityPageLocators.INGRID_LOC))
         mf_page.adding_ingredients_to_order(web_driver)
         mf_page.place_order_btn_click()
         mf_page_p_text = web_driver.find_element(By.XPATH, "//div[@class='Modal_modal__contentBox__sCy8X pt-30 pb-30']")

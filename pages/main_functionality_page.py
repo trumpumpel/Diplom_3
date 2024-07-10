@@ -1,8 +1,3 @@
-from selenium.webdriver import ActionChains
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
-
 from data import TestUrlData
 from pages.base_page import BasePage
 from conftest import web_driver
@@ -30,10 +25,6 @@ class MainFunctionalityPage(BasePage):
     @allure.step('Кликаем тестируемый ингридиент')
     def click_test_ing(self):
         return self.click_element(MainFunctionalityPageLocators.TEST_ING, 100)
-
-    @allure.step('Кликаем тестируемый элемент')
-    def click_test_elem(self):
-        return self.click_element(MainFunctionalityPageLocators.TEST_ELEM, 100)
 
     @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):
