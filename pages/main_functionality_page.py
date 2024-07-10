@@ -5,7 +5,6 @@ from locators.main_functionality_page_locators import MainFunctionalityPageLocat
 import allure
 
 
-@allure.title('Проверяем основной функционал')
 class MainFunctionalityPage(BasePage):
 
     def __init__(self, web_driver):

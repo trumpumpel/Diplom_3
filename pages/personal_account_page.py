@@ -4,7 +4,6 @@ from pages.base_page import BasePage
 import allure
 
 
-@allure.title('Проверяем функционал личного кабинета')
 class PersonalAccountPage(BasePage):
 
     def __init__(self, driver):

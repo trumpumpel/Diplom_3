@@ -5,7 +5,6 @@ from conftest import web_driver
 import allure
 
 
-@allure.title('Проверяем функционал восстановления пароля')
 class PasswordRecoveryPage(BasePage):
 
     def __init__(self, web_driver):
