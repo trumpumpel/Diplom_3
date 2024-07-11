@@ -22,10 +22,6 @@ class MainFunctionalityPage(BasePage):
     def button_personal_account_click(self):
         return self.click_element(MainFunctionalityPageLocators.PERSONAL_ACCOUNT, 100)
 
-    @allure.step('Кликаем тестируемый ингридиент')
-    def click_test_ing(self):
-        return self.click_element(MainFunctionalityPageLocators.TEST_ING, 100)
-
     @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):
         return self.click_element(MainFunctionalityPageLocators.CROSS_POP_UP, 100)

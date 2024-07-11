@@ -1,22 +1,27 @@
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from conftest import web_driver
 from selenium.webdriver.support import expected_conditions as EC
 import allure
-from locators.order_feed_page_locators import OrderFeedPageLocators
 from pages.order_feed_page import OrderFeedPage
-from data import TestUrlData
 
 
-@allure.title('Тестируем раздел Лента заказов')
 class TestOrderFeedPage:
 
-    @allure.title('Тестируем появление всплывающего ока с деталями после клика на заказ')
+    @allure.title('Тестируем появление всплывающего окна с деталями после клика на заказ')
     def test_click_order_pop_up_window_will_open(self, web_driver):
         of_page = OrderFeedPage(web_driver)
-        of_page.navigate(f'{TestUrlData.URL}{TestUrlData.URL_FEED}')
-        of_page.order_test_el_click()
+        of_page.button_personal_account_click()
+        of_page.set_email()
+        of_page.set_pas()
+        of_page.enter_button_click()
+        of_page.adding_ingredients_to_order(web_driver)
+        of_page.place_order_btn_click()
+        of_page_text = web_driver.find_element(By.XPATH,
+                                               "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
+        number = of_page_text.text
+        of_page.click_cross_pop_up()
+        of_page.button_constructor_order_feed()
+        of_page.click_element((By.XPATH, ".//*[contains(text(),'" + number + "')]"), 10)
         of_page = web_driver.find_element(By.XPATH,
                                           "//div[contains(@class, 'Modal_modal__container__Wo2l_')]")
         of_page_div_class = of_page.get_attribute("class")
@@ -31,9 +36,6 @@ class TestOrderFeedPage:
         of_page.enter_button_click()
         of_page.button_personal_account_click()
         of_page.order_history_button_click()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.visibility_of_element_located(
-                (By.XPATH, "//p[@class='text text_type_digits-default']")))
         of_page_text = web_driver.find_element(By.XPATH, "//p[@class='text text_type_digits-default']")
         number = of_page_text.text
         of_page.button_constructor_order_feed()
@@ -93,10 +95,6 @@ class TestOrderFeedPage:
         number = of_page_text.text
         of_page.click_cross_pop_up()
         of_page.button_constructor_order_feed()
-        WebDriverWait(web_driver, 100).until(
-            expected_conditions.text_to_be_present_in_element((By.XPATH,
-                                                               "//ul[contains(@class, 'OrderFeed_orderListReady__1YFem OrderFeed_orderList__cBvyi')]"),
-                                                              f"{number}"))
         of_page_text = web_driver.find_element(By.XPATH,
                                                "//ul[contains(@class, 'OrderFeed_orderListReady__1YFem OrderFeed_orderList__cBvyi')]")
         num = of_page_text.text

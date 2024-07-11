@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 
 class OrderFeedPageLocators:
     ORDER_FEED = (By.XPATH, "//p[text()='Лента Заказов']")
-    ORDER_TEST_EL = (By.XPATH, "//li[contains(@class, 'OrderHistory_listItem__2x95r mb-6')][1]")
     SET_EMAIL_LOG = (By.XPATH, "//label[text()='Email']/../input")
     SET_PAS_LOG = (By.CSS_SELECTOR, "input[name='Пароль']")
     SUB_BTN_CLICK_LOG = (By.XPATH, "//button[text()='Войти']")

@@ -1,14 +1,13 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.by import By
 from conftest import web_driver
-from selenium.webdriver.support import expected_conditions as EC, expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 import allure
 from data import TestUrlData
 from pages.main_functionality_page import MainFunctionalityPage
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 
 
-@allure.title('Проверка основного функционала')
 class TestMainFunctionalityPage:
 
     @allure.title('Проверяем переход по клику на «Конструктор»')
@@ -28,8 +27,18 @@ class TestMainFunctionalityPage:
     @allure.title('Проверяем появление всплывающего окна с деталями после клика на ингридиент')
     def test_click_ingredient(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
+        mf_page.button_personal_account_click()
+        mf_page.set_email()
+        mf_page.set_pas()
+        mf_page.enter_button_click()
+        mf_page.adding_ingredients_to_order(web_driver)
+        mf_page.place_order_btn_click()
+        mf_page_text = web_driver.find_element(By.XPATH,
+                                               "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
+        number = mf_page_text.text
+        mf_page.click_cross_pop_up()
         mf_page.button_constructor_order_feed()
-        mf_page.click_test_ing()
+        mf_page.click_element((By.XPATH, ".//*[contains(text(),'" + number + "')]"), 100)
         elem = web_driver.find_element(By.XPATH,
                                        "//div[contains(@class, 'sCy8X p-10')]")
         mf_page_div_class = elem.get_attribute("class")
@@ -38,9 +47,18 @@ class TestMainFunctionalityPage:
     @allure.title('Проверяем закрывается ли окно кликом по крестику')
     def test_clicking_on_the_cross_closes_the_pop_up_window(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
-        mf_page.button_constructor_order_feed()
-        mf_page.click_test_ing()
+        mf_page.button_personal_account_click()
+        mf_page.set_email()
+        mf_page.set_pas()
+        mf_page.enter_button_click()
+        mf_page.adding_ingredients_to_order(web_driver)
+        mf_page.place_order_btn_click()
+        of_page_text = web_driver.find_element(By.XPATH,
+                                               "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
+        number = of_page_text.text
         mf_page.click_cross_pop_up()
+        mf_page.button_constructor_order_feed()
+        mf_page.click_element((By.XPATH, ".//*[contains(text(),'" + number + "')]"), 100)
         elem = web_driver.find_element(By.XPATH, "//div[contains(@class, 'P3_V5')]")
         mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == "Modal_modal__P3_V5"

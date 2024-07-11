@@ -6,7 +6,6 @@ from data import TestUrlData
 from pages.personal_account_page import PersonalAccountPage
 
 
-@allure.title('Тестируем функционал личного кабинета')
 class TestPersonalAccountPage:
     @allure.title('Тестируем переход по клику на Личный кабинет')
     def test_click_button_personal_account(self, web_driver):
