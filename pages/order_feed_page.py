@@ -1,5 +1,6 @@
-from data import TestUrlData
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
+from locators.order_feed_page_locators import OrderFeedPageLocators
+from locators.base_page_locators import BasePageLocators
 from pages.base_page import BasePage
 from conftest import web_driver
 import allure
@@ -10,38 +11,32 @@ class OrderFeedPage(BasePage):
     def __init__(self, web_driver):
         super().__init__(web_driver)
 
-    @allure.step('Нажимаем поле Лента заказов')
-    def button_constructor_order_feed(self):
-        return self.click_element(MainFunctionalityPageLocators.ORDER_FEED, 100)
-
-    # @allure.step('Нажимаем на тестовый элемент')
-    # def order_test_el_click(self):
-    #     return self.click_element(OrderFeedPageLocators.ORDER_TEST_EL, 100)
-
-    @allure.step('Нажимаем на поле Личный Кабинет')
-    def button_personal_account_click(self):
-        return self.click_element(MainFunctionalityPageLocators.PERSONAL_ACCOUNT, 100)
-
-    @allure.step('Вводим email')
-    def set_email(self):
-        return self.enter_text(MainFunctionalityPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
-
-    @allure.step('Вводим пароль')
-    def set_pas(self):
-        return self.enter_text(MainFunctionalityPageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
-
-    @allure.step('Клик по кнопке Ввод')
-    def enter_button_click(self):
-        return self.click_element(MainFunctionalityPageLocators.SUB_BTN_CLICK_LOG, 100)
-
     @allure.step('Клик по кнопке История заказов')
     def order_history_button_click(self):
         return self.click_element(MainFunctionalityPageLocators.BTN_ORDER_HISTORY, 100)
 
-    @allure.step('Клик по кнопке Оформить заказ')
-    def place_order_btn_click(self):
-        return self.click_element(MainFunctionalityPageLocators.PLACE_ORDER_BTN, 100)
-
     @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):
-        return self.click_element(MainFunctionalityPageLocators.CROSS_POP_UP, 100)
+        return self.click_element(BasePageLocators.CROSS_POP_UP, 100)
+
+    @allure.step('Поиск всплывающего окна с деталями заказа')
+    def set_pop_up_with_det(self):
+        return self.find_element(OrderFeedPageLocators.P_P_O, 100)
+
+    @allure.step('Поиск номера заказа в ленте заказов')
+    def find_number_oder(self):
+        return self.find_element(OrderFeedPageLocators.NUM_O, 100)
+
+    @allure.step('Поиск элемента счётчика заказов')
+    def set_counter_op(self):
+        return self.find_element(OrderFeedPageLocators.EL_COUNTER, 100)
+
+    @allure.step('Получение номера заказа из всплывающего окна')
+    def find_number_oder_pop_up(self):
+        return self.find_element(OrderFeedPageLocators.P_O_NUM,
+                                 100)
+
+    @allure.step('Получение номера заказа из раздела В работе')
+    def find_number_oder_in_prog(self):
+        return self.find_element(OrderFeedPageLocators.NUM_I_PROG,
+                                 100)

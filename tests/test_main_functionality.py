@@ -1,5 +1,4 @@
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.common.by import By
 from conftest import web_driver
 from selenium.webdriver.support import expected_conditions as EC
 import allure
@@ -35,16 +34,10 @@ class TestMainFunctionalityPage:
         mf_page.enter_button_click()
         mf_page.adding_ingredients_to_order(web_driver)
         mf_page.place_order_btn_click()
-        mf_page_text = web_driver.find_element(By.XPATH,
-                                               "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
-        number = mf_page_text.text
-        mf_page.click_cross_pop_up()
-        mf_page.button_constructor_order_feed()
-        mf_page.click_element((By.XPATH, ".//*[contains(text(),'" + number + "')]"), 100)
-        elem = web_driver.find_element(By.XPATH,
-                                       "//div[contains(@class, 'sCy8X p-10')]")
+        mf_page.click_on_ingred_in_order_feed()
+        elem = mf_page.click_ing_ord_feed()
         mf_page_div_class = elem.get_attribute("class")
-        assert mf_page_div_class == "Modal_orderBox__1xWdi Modal_modal__contentBox__sCy8X p-10"
+        assert mf_page_div_class == TestUrlData.ACT_WIN
 
     @allure.title('Проверяем закрывается ли окно кликом по крестику')
     def test_clicking_on_the_cross_closes_the_pop_up_window(self, web_driver):
@@ -55,22 +48,17 @@ class TestMainFunctionalityPage:
         mf_page.enter_button_click()
         mf_page.adding_ingredients_to_order(web_driver)
         mf_page.place_order_btn_click()
-        of_page_text = web_driver.find_element(By.XPATH,
-                                               "//h2[contains(@class, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')]")
-        number = of_page_text.text
-        mf_page.click_cross_pop_up()
-        mf_page.button_constructor_order_feed()
-        mf_page.click_element((By.XPATH, ".//*[contains(text(),'" + number + "')]"), 100)
-        elem = web_driver.find_element(By.XPATH, "//div[contains(@class, 'P3_V5')]")
+        mf_page.click_on_ingred_in_order_feed()
+        elem = mf_page.set_cl_pop_up()
         mf_page_div_class = elem.get_attribute("class")
-        assert mf_page_div_class == "Modal_modal__P3_V5"
+        assert mf_page_div_class == TestUrlData.CL_WIN
 
     #
     @allure.title('Проверяем увеличение значения счётчика при добавлении ингридиента в заказ')
     def test_adding_ingredient_to_order(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.adding_ingredients_to_order(web_driver)
-        mf_page_p_text = web_driver.find_element(By.XPATH, "//p[@class='counter_counter__num__3nue1'][text()='2']")
+        mf_page_p_text = mf_page.set_counter()
         assert mf_page_p_text.text == "2"
 
     @allure.title('Проверяем возможность оформить заказ залогиненным пользователем')
@@ -82,7 +70,7 @@ class TestMainFunctionalityPage:
         mf_page.enter_button_click()
         mf_page.adding_ingredients_to_order(web_driver)
         mf_page.place_order_btn_click()
-        mf_page_p_text = web_driver.find_element(By.XPATH, "//div[@class='Modal_modal__contentBox__sCy8X pt-30 pb-30']")
+        mf_page_p_text = mf_page.set_order_in_progress()
         assert "Ваш заказ начали готовить" in mf_page_p_text.text
 
     @allure.title('Проверяем возможность оформить заказ незалогиненным пользователем')

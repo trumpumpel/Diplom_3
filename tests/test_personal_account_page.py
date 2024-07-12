@@ -1,5 +1,3 @@
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 from conftest import web_driver
 import allure
 from data import TestUrlData
@@ -38,6 +36,5 @@ class TestPersonalAccountPage:
         pa_page.enter_button_click()
         pa_page.button_personal_account_click()
         pa_page.exit_button_click()
-        WebDriverWait(web_driver, 15).until(expected_conditions.url_changes(f'{TestUrlData.URL}{TestUrlData.URL_PROFILE}'))
         r_url = pa_page.count_url(web_driver)
         assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_LOG}'

@@ -1,4 +1,3 @@
-from data import TestUrlData
 from pages.base_page import BasePage
 from conftest import web_driver
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
@@ -10,34 +9,22 @@ class MainFunctionalityPage(BasePage):
     def __init__(self, web_driver):
         super().__init__(web_driver)
 
-    @allure.step('Нажимаем поле Конструктор')
+    @allure.step('Клик по Конструктор')
     def button_constructor_click(self):
         return self.click_element(MainFunctionalityPageLocators.CONSTRUCTOR, 100)
-
-    @allure.step('Нажимаем поле Лента заказов')
-    def button_constructor_order_feed(self):
-        return self.click_element(MainFunctionalityPageLocators.ORDER_FEED, 100)
-
-    @allure.step('Нажимаем поле Личный кабинет')
-    def button_personal_account_click(self):
-        return self.click_element(MainFunctionalityPageLocators.PERSONAL_ACCOUNT, 100)
 
     @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):
         return self.click_element(MainFunctionalityPageLocators.CROSS_POP_UP, 100)
 
-    @allure.step('Вводим email')
-    def set_email(self):
-        return self.enter_text(MainFunctionalityPageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
+    @allure.step('Поиск закрытого класса всплывающего окна')
+    def set_cl_pop_up(self):
+        return self.find_element(MainFunctionalityPageLocators.CL_POP_UP, 100)
 
-    @allure.step('Вводим пароль')
-    def set_pas(self):
-        return self.enter_text(MainFunctionalityPageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
+    @allure.step('Поиск элемента счётчика заказов')
+    def set_counter(self):
+        return self.find_element(MainFunctionalityPageLocators.COUNTER, 100)
 
-    @allure.step('Клик по кнопке Ввод')
-    def enter_button_click(self):
-        return self.click_element(MainFunctionalityPageLocators.SUB_BTN_CLICK_LOG, 100)
-
-    @allure.step('Клик по кнопке Оформить заказ')
-    def place_order_btn_click(self):
-        return self.click_element(MainFunctionalityPageLocators.PLACE_ORDER_BTN, 100)
+    @allure.step('Получение подтверждения изготовления заказа')
+    def set_order_in_progress(self):
+        return self.find_element(MainFunctionalityPageLocators.O_I_P, 100)

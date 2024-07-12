@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from conftest import web_driver
 import allure
 from data import TestUrlData
@@ -33,7 +32,6 @@ class TestPasswordRecoveryPage:
         pr_page.set_email()
         pr_page.btn_recover_click()
         pr_page.click_element(PasswordRecoveryPageLocators.PAS, 100)
-        elem = web_driver.find_element(By.XPATH,
-                                       "//div[@class= 'input pr-6 pl-6 input_type_text input_size_default input_status_active']")
+        elem = pr_page.set_pas_act()
         pr_page_div_class = elem.get_attribute("class")
-        assert pr_page_div_class == "input pr-6 pl-6 input_type_text input_size_default input_status_active"
+        assert pr_page_div_class == TestUrlData.PAS_ACT_CL
