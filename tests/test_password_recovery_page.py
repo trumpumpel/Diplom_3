@@ -12,7 +12,8 @@ class TestPasswordRecoveryPage:
         pr_page = PasswordRecoveryPage(web_driver)
         pr_page.navigate(f'{TestUrlData.URL}{TestUrlData.URL_LOG}')
         pr_page.btn_recover_password_click()
-        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_FORGOT_PASSWORD}'
+        r_url = pr_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_FORGOT_PASSWORD}'
 
     @allure.title('Проверяем ввод почты и клик по кнопке Восстановить')
     def test_set_email_click_button_recovery(self, web_driver):
@@ -21,7 +22,8 @@ class TestPasswordRecoveryPage:
         pr_page.btn_recover_password_click()
         pr_page.set_email()
         pr_page.btn_recover_click()
-        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_FORGOT_PASSWORD}'
+        r_url = pr_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_FORGOT_PASSWORD}'
 
     @allure.title('Проверяем клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его')
     def test_click_to_button_show_hide_password(self, web_driver):

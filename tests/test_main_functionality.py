@@ -15,13 +15,15 @@ class TestMainFunctionalityPage:
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.navigate(f'{TestUrlData.URL}{TestUrlData.URL_LOG}')
         mf_page.button_constructor_click()
-        assert web_driver.current_url == TestUrlData.URL
+        r_url = mf_page.count_url(web_driver)
+        assert r_url == TestUrlData.URL
 
     @allure.title('Проверяем переход по клику на «Лента заказов»')
     def test_click_button_order_feed(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.button_constructor_order_feed()
-        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_FEED}'
+        r_url = mf_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_FEED}'
 
     #
     @allure.title('Проверяем появление всплывающего окна с деталями после клика на ингридиент')

@@ -8,4 +8,3 @@ class TestUrlData:
     COR_NAME = 'Zemdan'
     COR_EMAIL = '1234@ya.com'
     COR_PASSWORD = '123ddd'
-    un_password = '1'

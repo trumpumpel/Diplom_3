@@ -12,7 +12,8 @@ class TestPersonalAccountPage:
         pa_page = PersonalAccountPage(web_driver)
         pa_page.navigate(TestUrlData.URL)
         pa_page.button_personal_account_click()
-        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_LOG}'
+        r_url = pa_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_LOG}'
 
     @allure.title('Тестируем переход по клику на История заказов')
     def test_click_button_order_history(self, web_driver):
@@ -24,7 +25,8 @@ class TestPersonalAccountPage:
         pa_page.enter_button_click()
         pa_page.button_personal_account_click()
         pa_page.order_history_button_click()
-        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_ORDER_HISTORY}'
+        r_url = pa_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_ORDER_HISTORY}'
 
     @allure.title('Тестируем переход по клику на Выход')
     def test_click_button_exit(self, web_driver):
@@ -37,4 +39,5 @@ class TestPersonalAccountPage:
         pa_page.button_personal_account_click()
         pa_page.exit_button_click()
         WebDriverWait(web_driver, 15).until(expected_conditions.url_changes(f'{TestUrlData.URL}{TestUrlData.URL_PROFILE}'))
-        assert web_driver.current_url == f'{TestUrlData.URL}{TestUrlData.URL_LOG}'
+        r_url = pa_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_LOG}'

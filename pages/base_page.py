@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
-
+from locators.base_page_locators import BasePageLocators
 from conftest import web_driver
 import allure
 
@@ -34,9 +34,11 @@ class BasePage:
     @allure.step("Добавляю ингридиенты в заказ")
     def adding_ingredients_to_order(self, web_driver):
         WebDriverWait(web_driver, 100).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR,
-                                            ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")))
-        INGRID = web_driver.find_element(By.CSS_SELECTOR,
-                                         ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
-        TEFKI = web_driver.find_element(By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
+            EC.presence_of_element_located(BasePageLocators.INGRID_LOC))
+        INGRID = web_driver.find_element(BasePageLocators.INGRID_LOC)
+        TEFKI = web_driver.find_element(BasePageLocators.TEFKI_LOC)
         ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
+
+    @allure.step('Считываю урл')
+    def count_url(self, web_driver):
+        return web_driver.current_url

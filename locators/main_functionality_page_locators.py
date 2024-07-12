@@ -12,3 +12,4 @@ class MainFunctionalityPageLocators:
                     "//button[contains(@class, 'modified__3V5XS Modal_modal__close__TnseK')]")
     PERSONAL_ACCOUNT = (By.XPATH, "//p[contains(text(), 'Личный Кабинет')]")
     PLACE_ORDER_BTN = (By.XPATH, "//button[text()='Оформить заказ']")
+    BTN_ORDER_HISTORY = (By.XPATH, "//a[text()='История заказов']")
