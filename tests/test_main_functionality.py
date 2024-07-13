@@ -20,7 +20,6 @@ class TestMainFunctionalityPage:
         r_url = mf_page.count_url(web_driver)
         assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_FEED}'
 
-    #
     @allure.title('Проверяем появление всплывающего окна с деталями после клика на ингридиент')
     def test_click_ingredient(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
@@ -30,7 +29,7 @@ class TestMainFunctionalityPage:
         mf_page.enter_button_click()
         mf_page.adding_ingredients_to_order(web_driver)
         mf_page.place_order_btn_click()
-        mf_page.click_on_ingred_in_order_feed()
+        mf_page.click_on_ingrid_in_order_feed()
         elem = mf_page.click_ing_ord_feed()
         mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == TestUrlData.ACT_WIN
@@ -44,7 +43,7 @@ class TestMainFunctionalityPage:
         mf_page.enter_button_click()
         mf_page.adding_ingredients_to_order(web_driver)
         mf_page.place_order_btn_click()
-        mf_page.click_on_ingred_in_order_feed()
+        mf_page.click_on_ingrid_in_order_feed()
         elem = mf_page.set_cl_pop_up()
         mf_page_div_class = elem.get_attribute("class")
         assert mf_page_div_class == TestUrlData.CL_WIN

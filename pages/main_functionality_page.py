@@ -14,10 +14,6 @@ class MainFunctionalityPage(BasePage):
     def button_constructor_click(self):
         return self.click_element(MainFunctionalityPageLocators.CONSTRUCTOR, 100)
 
-    @allure.step('Кликаем крестик всплывающего окна')
-    def click_cross_pop_up(self):
-        return self.click_element(BasePageLocators.CROSS_POP_UP, 100)
-
     @allure.step('Поиск закрытого класса всплывающего окна')
     def set_cl_pop_up(self):
         return self.find_element(MainFunctionalityPageLocators.CL_POP_UP, 100)

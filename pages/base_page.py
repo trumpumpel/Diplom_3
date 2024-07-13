@@ -50,7 +50,7 @@ class BasePage:
         return web_driver.current_url
 
     @allure.step('Клик по заказанному ингридиенту в Ленте заказов')
-    def click_on_ingred_in_order_feed(self):
+    def click_on_ingrid_in_order_feed(self):
         element = self.find_element(BasePageLocators.ELEM,
                                     10)
         number = element.text

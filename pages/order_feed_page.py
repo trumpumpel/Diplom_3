@@ -1,3 +1,5 @@
+from selenium.webdriver.common.by import By
+
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 from locators.order_feed_page_locators import OrderFeedPageLocators
 from locators.base_page_locators import BasePageLocators
@@ -36,7 +38,12 @@ class OrderFeedPage(BasePage):
         return self.find_element(OrderFeedPageLocators.P_O_NUM,
                                  100)
 
-    @allure.step('Получение номера заказа из раздела В работе')
+    @allure.step('Поиск номера заказа в разделе В работе')
     def find_number_oder_in_prog(self):
         return self.find_element(OrderFeedPageLocators.NUM_I_PROG,
+                                 100)
+
+    @allure.step('Поиск номера заказа в Истории заказов')
+    def find_number_oder_in_hst_ord(self):
+        return self.find_element(OrderFeedPageLocators.H_OR,
                                  100)

@@ -5,6 +5,7 @@ class OrderFeedPageLocators:
     P_P_O = (By.XPATH,
              "//div[contains(@class, 'Modal_modal__container__Wo2l_')]")
     NUM_O = (By.XPATH, "//p[@class='text text_type_digits-default']")
+    H_OR = (By.XPATH, "//div[@class='OrderHistory_orderHistory__qy1VB']")
     EL_COUNTER = (By.XPATH,
                   "//p[@class='OrderFeed_number__2MbrQ text text_type_digits-large']")
     P_O_NUM = (By.XPATH,
