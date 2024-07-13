@@ -1,6 +1,6 @@
+from locators.base_page_locators import BasePageLocators
 from locators.password_recovery_page_locators import PasswordRecoveryPageLocators
 from pages.base_page import BasePage
-from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 from conftest import web_driver
 import allure
 
@@ -12,7 +12,7 @@ class PasswordRecoveryPage(BasePage):
 
     @allure.step('Клик по кнопке Восстановить пароль')
     def btn_recover_password_click(self):
-        return self.click_element(MainFunctionalityPageLocators.BTN_RECOVER_PASSWORD, 100)
+        return self.click_element(BasePageLocators.BTN_RECOVER_PASSWORD, 100)
 
     @allure.step('Клик по кнопке Восстановить')
     def btn_recover_click(self):

@@ -1,4 +1,3 @@
-from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 from locators.order_feed_page_locators import OrderFeedPageLocators
 from locators.base_page_locators import BasePageLocators
 from pages.base_page import BasePage
@@ -13,7 +12,7 @@ class OrderFeedPage(BasePage):
 
     @allure.step('Клик по кнопке История заказов')
     def order_history_button_click(self):
-        return self.click_element(MainFunctionalityPageLocators.BTN_ORDER_HISTORY, 100)
+        return self.click_element(BasePageLocators.BTN_ORDER_HISTORY, 100)
 
     @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):

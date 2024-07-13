@@ -20,3 +20,5 @@ class BasePageLocators:
         By.CSS_SELECTOR,
         ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
     TEF_LOC = (By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
+    BTN_ORDER_HISTORY = (By.XPATH, "//a[text()='История заказов']")
+    BTN_RECOVER_PASSWORD = (By.XPATH, "//a[text()='Восстановить пароль']")
