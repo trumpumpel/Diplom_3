@@ -1,6 +1,8 @@
 from conftest import web_driver
 import allure
-from data import TestUrlData
+
+from data.auth_data import TestAuthData
+from data.url_data import TestUrlData
 from pages.main_functionality_page import MainFunctionalityPage
 
 
@@ -32,7 +34,7 @@ class TestMainFunctionalityPage:
         mf_page.click_on_ingrid_in_order_feed()
         elem = mf_page.click_ing_ord_feed()
         mf_page_div_class = elem.get_attribute("class")
-        assert mf_page_div_class == TestUrlData.ACT_WIN
+        assert mf_page_div_class == TestAuthData.ACT_WIN
 
     @allure.title('Проверяем закрывается ли окно кликом по крестику')
     def test_clicking_on_the_cross_closes_the_pop_up_window(self, web_driver):
@@ -46,7 +48,7 @@ class TestMainFunctionalityPage:
         mf_page.click_on_ingrid_in_order_feed()
         elem = mf_page.set_cl_pop_up()
         mf_page_div_class = elem.get_attribute("class")
-        assert mf_page_div_class == TestUrlData.CL_WIN
+        assert mf_page_div_class == TestAuthData.CL_WIN
 
     #
     @allure.title('Проверяем увеличение значения счётчика при добавлении ингридиента в заказ')

@@ -1,7 +1,6 @@
 from pages.base_page import BasePage
 from conftest import web_driver
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
-from locators.base_page_locators import BasePageLocators
 import allure
 
 

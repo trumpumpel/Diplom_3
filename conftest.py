@@ -4,8 +4,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service as FireFoxService
 from selenium.webdriver.chrome.service import Service as ChromeService
-from data import TestUrlData
 import allure
+
+from data.url_data import TestUrlData
 
 
 @allure.title('Открываем браузер Chrome')

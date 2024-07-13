@@ -5,8 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
 from conftest import web_driver
 import allure
-
-from data import TestUrlData
+from data.auth_data import TestAuthData
 from locators.base_page_locators import BasePageLocators
 
 
@@ -73,11 +72,11 @@ class BasePage:
 
     @allure.step('Вводим email')
     def set_email(self):
-        return self.enter_text(BasePageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
+        return self.enter_text(BasePageLocators.SET_EMAIL_LOG, TestAuthData.COR_EMAIL, 100)
 
     @allure.step('Вводим пароль')
     def set_pas(self):
-        return self.enter_text(BasePageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
+        return self.enter_text(BasePageLocators.SET_PAS_LOG, TestAuthData.COR_PASSWORD, 100)
 
     @allure.step('Клик по кнопке Ввод')
     def enter_button_click(self):

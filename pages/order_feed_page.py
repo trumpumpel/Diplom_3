@@ -1,5 +1,3 @@
-from selenium.webdriver.common.by import By
-
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 from locators.order_feed_page_locators import OrderFeedPageLocators
 from locators.base_page_locators import BasePageLocators

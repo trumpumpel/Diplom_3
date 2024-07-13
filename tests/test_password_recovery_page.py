@@ -1,6 +1,8 @@
 from conftest import web_driver
 import allure
-from data import TestUrlData
+
+from data.auth_data import TestAuthData
+from data.url_data import TestUrlData
 from locators.password_recovery_page_locators import PasswordRecoveryPageLocators
 from pages.password_recovery_page import PasswordRecoveryPage
 
@@ -34,4 +36,4 @@ class TestPasswordRecoveryPage:
         pr_page.click_element(PasswordRecoveryPageLocators.PAS, 100)
         elem = pr_page.set_pas_act()
         pr_page_div_class = elem.get_attribute("class")
-        assert pr_page_div_class == TestUrlData.PAS_ACT_CL
+        assert pr_page_div_class == TestAuthData.PAS_ACT_CL

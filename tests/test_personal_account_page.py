@@ -1,6 +1,6 @@
 from conftest import web_driver
 import allure
-from data import TestUrlData
+from data.url_data import TestUrlData
 from pages.personal_account_page import PersonalAccountPage
 
 

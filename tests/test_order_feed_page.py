@@ -1,6 +1,6 @@
 from conftest import web_driver
 import allure
-from data import TestUrlData
+from data.auth_data import TestAuthData
 from pages.order_feed_page import OrderFeedPage
 
 
@@ -18,7 +18,7 @@ class TestOrderFeedPage:
         of_page.click_on_ingrid_in_order_feed()
         elem = of_page.set_pop_up_with_det()
         of_page_div_class = elem.get_attribute("class")
-        assert of_page_div_class == TestUrlData.POP_UP_DET
+        assert of_page_div_class == TestAuthData.POP_UP_DET
 
     @allure.title('Тестируем появление заказа из истории заказов в Ленте заказов')
     @allure.title('Тестируем появление заказа после создания в Ленте заказов')
