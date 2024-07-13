@@ -35,13 +35,9 @@ class BasePage:
     @allure.step("Добавляю ингридиенты в заказ")
     def adding_ingredients_to_order(self, web_driver):
         WebDriverWait(web_driver, 100).until(
-            EC.presence_of_element_located((
-                By.CSS_SELECTOR,
-                ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")))
-        INGRID = web_driver.find_element(
-            By.CSS_SELECTOR,
-            ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
-        TEFKI = web_driver.find_element(By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
+            EC.presence_of_element_located(BasePageLocators.ING_LOC))
+        INGRID = web_driver.find_element(BasePageLocators.ING_LOC)
+        TEFKI = web_driver.find_element(BasePageLocators.TEF_LOC)
         ActionChains(web_driver).move_to_element(INGRID).move_to_element(TEFKI).drag_and_drop(INGRID, TEFKI).perform()
 
     @allure.step('Получаю текущий урл')

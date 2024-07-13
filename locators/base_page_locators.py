@@ -16,3 +16,7 @@ class BasePageLocators:
     SET_PAS_LOG = (By.CSS_SELECTOR, "input[name='Пароль']")
     SUB_BTN_CLICK_LOG = (By.XPATH, "//button[text()='Войти']")
     PLACE_ORDER_BTN = (By.XPATH, "//button[text()='Оформить заказ']")
+    ING_LOC = (
+        By.CSS_SELECTOR,
+        ".BurgerIngredients_ingredients__menuContainer__Xu3Mo > ul:nth-child(2) > a:nth-child(1) > img")
+    TEF_LOC = (By.XPATH, "//ul[@class='BurgerConstructor_basket__list__l9dp_']")
