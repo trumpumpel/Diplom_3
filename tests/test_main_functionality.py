@@ -9,7 +9,6 @@ class TestMainFunctionalityPage:
     @allure.title('Проверяем переход по клику на «Конструктор»')
     def test_click_button_constructor(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
-        mf_page.navigate(f'{TestUrlData.URL}{TestUrlData.URL_LOG}')
         mf_page.button_constructor_click()
         r_url = mf_page.count_url(web_driver)
         assert r_url == TestUrlData.URL
