@@ -1,6 +1,7 @@
 from pages.base_page import BasePage
 from conftest import web_driver
 from locators.main_functionality_page_locators import MainFunctionalityPageLocators
+from locators.base_page_locators import BasePageLocators
 import allure
 
 
@@ -15,7 +16,7 @@ class MainFunctionalityPage(BasePage):
 
     @allure.step('Кликаем крестик всплывающего окна')
     def click_cross_pop_up(self):
-        return self.click_element(MainFunctionalityPageLocators.CROSS_POP_UP, 100)
+        return self.click_element(BasePageLocators.CROSS_POP_UP, 100)
 
     @allure.step('Поиск закрытого класса всплывающего окна')
     def set_cl_pop_up(self):
@@ -28,3 +29,7 @@ class MainFunctionalityPage(BasePage):
     @allure.step('Получение подтверждения изготовления заказа')
     def set_order_in_progress(self):
         return self.find_element(MainFunctionalityPageLocators.O_I_P, 100)
+
+    @allure.step('Клик по Войти в аккаунт')
+    def button_enter_pers_acc_click(self):
+        return self.click_element(MainFunctionalityPageLocators.BTN_ENT_PA, 100)

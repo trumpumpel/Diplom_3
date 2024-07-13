@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from conftest import web_driver
 from selenium.webdriver.support import expected_conditions as EC
@@ -31,9 +33,13 @@ class TestOrderFeedPage:
         of_page.enter_button_click()
         of_page.button_personal_account_click()
         of_page.order_history_button_click()
+        time.sleep(3)
         elem = of_page.find_number_oder()
         number = elem.text
+        print(number)
+        time.sleep(3)
         of_page.button_constructor_order_feed()
+        time.sleep(3)
         assert EC.presence_of_element_located((By.XPATH, ".//*[contains(text(),'" + number + "')]")) is not True
 
     @allure.title('Тестируем увелечение значения счётчика за всё время при создании нового заказа')

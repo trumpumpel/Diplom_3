@@ -58,38 +58,31 @@ class BasePage:
         self.click_element(BasePageLocators.ORDER_FEED, 100)
         return self.click_element((By.XPATH, ".//*[contains(text(),'" + number + "')]"), 100)
 
+    @allure.step('Клик по ингридиенту в Ленте заказов')
+    def click_ing_ord_feed(self):
+        self.click_element(BasePageLocators.CL_ING, 100)
+        return self.find_element(BasePageLocators.ACT_POP_UP, 100)
 
-@allure.step('Клик по ингридиенту в Ленте заказов')
-def click_ing_ord_feed(self):
-    self.click_element(BasePageLocators.CL_ING, 100)
-    return self.find_element(BasePageLocators.ACT_POP_UP, 100)
+    @allure.step('Клик по Лента заказов')
+    def button_constructor_order_feed(self):
+        return self.click_element(BasePageLocators.ORDER_FEED, 100)
 
+    @allure.step('Нажимаем поле Личный кабинет')
+    def button_personal_account_click(self):
+        return self.click_element(BasePageLocators.PERSONAL_ACCOUNT, 100)
 
-@allure.step('Клик по Лента заказов')
-def button_constructor_order_feed(self):
-    return self.click_element(BasePageLocators.ORDER_FEED, 100)
+    @allure.step('Вводим email')
+    def set_email(self):
+        return self.enter_text(BasePageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
 
+    @allure.step('Вводим пароль')
+    def set_pas(self):
+        return self.enter_text(BasePageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
 
-@allure.step('Нажимаем поле Личный кабинет')
-def button_personal_account_click(self):
-    return self.click_element(BasePageLocators.PERSONAL_ACCOUNT, 100)
+    @allure.step('Клик по кнопке Ввод')
+    def enter_button_click(self):
+        return self.click_element(BasePageLocators.SUB_BTN_CLICK_LOG, 100)
 
-
-@allure.step('Вводим email')
-def set_email(self):
-    return self.enter_text(BasePageLocators.SET_EMAIL_LOG, TestUrlData.COR_EMAIL, 100)
-
-
-@allure.step('Вводим пароль')
-def set_pas(self):
-    return self.enter_text(BasePageLocators.SET_PAS_LOG, TestUrlData.COR_PASSWORD, 100)
-
-
-@allure.step('Клик по кнопке Ввод')
-def enter_button_click(self):
-    return self.click_element(BasePageLocators.SUB_BTN_CLICK_LOG, 100)
-
-
-@allure.step('Клик по кнопке Оформить заказ')
-def place_order_btn_click(self):
-    return self.click_element(BasePageLocators.PLACE_ORDER_BTN, 100)
+    @allure.step('Клик по кнопке Оформить заказ')
+    def place_order_btn_click(self):
+        return self.click_element(BasePageLocators.PLACE_ORDER_BTN, 100)

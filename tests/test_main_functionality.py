@@ -1,10 +1,7 @@
-from selenium.webdriver.support.wait import WebDriverWait
 from conftest import web_driver
-from selenium.webdriver.support import expected_conditions as EC
 import allure
 from data import TestUrlData
 from pages.main_functionality_page import MainFunctionalityPage
-from locators.main_functionality_page_locators import MainFunctionalityPageLocators
 
 
 class TestMainFunctionalityPage:
@@ -77,5 +74,6 @@ class TestMainFunctionalityPage:
     def test_placing_an_order_not_logged_in_user(self, web_driver):
         mf_page = MainFunctionalityPage(web_driver)
         mf_page.adding_ingredients_to_order(web_driver)
-        assert WebDriverWait(web_driver, 10).until(
-            EC.invisibility_of_element_located(MainFunctionalityPageLocators.PLACE_ORDER_BTN))
+        mf_page.button_enter_pers_acc_click()
+        r_url = mf_page.count_url(web_driver)
+        assert r_url == f'{TestUrlData.URL}{TestUrlData.URL_LOG}'
