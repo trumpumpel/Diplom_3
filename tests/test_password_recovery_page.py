@@ -33,7 +33,7 @@ class TestPasswordRecoveryPage:
         pr_page.btn_recover_password_click()
         pr_page.set_email()
         pr_page.btn_recover_click()
-        pr_page.click_element(PasswordRecoveryPageLocators.PAS, 100)
+        pr_page.click_pas()
         elem = pr_page.set_pas_act()
         pr_page_div_class = elem.get_attribute("class")
         assert pr_page_div_class == TestAuthData.PAS_ACT_CL

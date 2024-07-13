@@ -21,3 +21,7 @@ class PasswordRecoveryPage(BasePage):
     @allure.step('Поиск элемента поля Пароль')
     def set_pas_act(self):
         return self.find_element(PasswordRecoveryPageLocators.PAS_ACT, 100)
+
+    @allure.step('Клик по полю Пароль')
+    def click_pas(self):
+        return self.click_element(PasswordRecoveryPageLocators.PAS, 100)
